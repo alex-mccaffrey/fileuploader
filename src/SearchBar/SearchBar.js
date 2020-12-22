@@ -1,3 +1,8 @@
+/*The second component that is getting searchTerm and filterOption as props is the SearchBar component. The SearchBar component itself is not using these props directly but rather passing them along to the respective child components. 
+The searchTerm is needed in the SearchBox and the filterOption is needed in the FilterOptions components respectively. Simply pass along the props in SearchBar*/
+
+
+
 import React, { Component } from 'react';
 import './SearchBar.css';
 import SearchBox from '../SearchBox/SearchBox';
@@ -11,8 +16,12 @@ class SearchBar extends Component {
           <h1>File Uploader</h1>
         </div>
         <div className="SearchBar__controls">
-          <SearchBox/>
-          <FilterOptions/>
+        <SearchBox
+            searchTerm={this.props.searchTerm}
+            handleUpdate={this.props.handleUpdate}/>
+          <FilterOptions
+            filterOption={this.props.filterOption}
+            handleFilterChange={this.props.handleFilterChange}/>
         </div>
       </div>
     );
